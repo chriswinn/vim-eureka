@@ -11,8 +11,10 @@
 ########################
 # Ignore: ./vim/plugged/   # directory
 .vim/plugged/*
+.vim/backups/*
 
 ########################
 # DO NOT IGNORE!: ./vim/autoload/   # directory
-!.vim/autoload/
 !.vim/autoload/*
+!.vim/plugged/
+!.vim/backups/
