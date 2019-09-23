@@ -14,6 +14,7 @@ plugged/**
 backups/**
 
 ########################
-# DO NOT IGNORE!: .vim/   # directory
-!autoload/*
-!.vim/**/
+# DO NOT IGNORE!: .gitignore file inside these dirs. 
+#   NOTE: Have to have a file inside each directory so I can add an empty directory to git 
+!.vim/plugged/.gitignore
+!.vim/backups/.gitignore
