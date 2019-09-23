@@ -1,3 +1,5 @@
+" Mostly stolen from Yan Pritzer's most excellent Yadr (github.com/skwp/dotfiles)
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
@@ -42,3 +44,20 @@ autocmd vimenter * NERDTree
 :set ai     
 "   set 'tab stop' & 'shift width' options to the same value
 :set ts=2 sw=2
+
+" ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+
