@@ -1,0 +1,23 @@
+########################
+# Ignore: .vim swap files   # file
+*.swp
+
+########################
+# Ignore: ./vim/plugged/   # directory
+.vim/plugged/*
+
+########################
+# Ignore: ./vim/autoload/   # directory
+!.vim/autoload/
+
+########################
+# Ignore: .netrwhist   # file
+**.netrwhist
+
+########################
+# Ignore: .viminfo   # file
+**.viminfo
+
+########################
+# Ignore: OSX filetype   # files
+**.DS_Store
