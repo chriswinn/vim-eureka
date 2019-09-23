@@ -60,4 +60,5 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-
+" ================ Custom Settings ========================
+"so ~/.yadr/vim/settings.vim
