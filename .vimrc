@@ -17,8 +17,6 @@ syntax on                       "Turn on syntax highlighting
 " http://items.sjbach.com/319/configuring-vim-right
 "set hidden
 
-"turn on syntax highlighting
-
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -33,6 +31,7 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
   set undodir=~/.vim/backups
   set undofile
 endif
+
 " ================ Indentation ======================
 
 set autoindent
@@ -46,13 +45,11 @@ set expandtab
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
-
 filetype plugin on
 filetype indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
-
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
@@ -91,41 +88,46 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" ================ PlugIn's Enabled ========================
+" ================ Vim-Plug :: Automatic Installation ========================
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" ================ Vim-Plug :: PlugIn's Enabled ========================
 
 " Plugins will be downloaded under the specified directory.
-"call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
-"Plug 'tpope/vim-sensible'
-"Plug 'junegunn/seoul256.vim'
-"   NERDTree :
-"Plug 'scrooloose/nerdtree'
-"   NERDTree : Git integration
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"   If you need Vim help for vim-plug itself (e.g. :help plug-options), register vim-plug as a plugin.
-"Plug 'junegunn/vim-plug'
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/seoul256.vim'
+Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 " List ends here. Plugins become visible to Vim after this call.
-"call plug#end()
+call plug#end()
 
-" ================ PlugIn Settings ========================
+" ================ Vim-Plug :: Settings ========================
 "Run :PlugUpdate to update the plugins.
 "After the update, to review changes run :PlugDiff
 "Run :PlugClean, to detect and remove undeclared plugins.
 
 " NERDTree OPTIONS START HERE
-"   Open NERDTree by default
-"autocmd vimenter * NERDTree
-"   NERDTree : Making it prettier
-"let NERDTreeMinimalUI = 1
-"let NERDTreeDirArrows = 1
-"   NERDTree : Closing Options
+"     Open NERDTree by default
+autocmd vimenter * NERDTree
+"     NERDTree : Making it prettier
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeShowHidden=1
+"     NERDTree : Closing Options
 "     NERDTree : Closing NERDTree automatically
 "let NERDTreeQuitOnOpen = 1
 "     NERDTree : automatically close a tab if the only remaining window is NerdTree
 "autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
-"   NERDTree : Deleting files
+"     NERDTree : Deleting files
 "     Automatically delete the buffer of the file you just deleted with NerdTree:
-"let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeAutoDeleteBuffer = 1
 
 " ================ Custom Settings ========================
 "source ~/.vim/scripts.vim
