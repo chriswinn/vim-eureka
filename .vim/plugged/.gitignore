@@ -1,3 +1,4 @@
+# The folder used to host plugs managed by vim-plug
 *
 */
 !.gitignore
