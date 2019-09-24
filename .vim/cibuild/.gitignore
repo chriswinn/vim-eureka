@@ -1,0 +1,4 @@
+# This folder used for ci build process
+*
+*/
+!.gitignore

@@ -1,3 +1,4 @@
+# This directory used to store persistent-undo files for vim.
 *
 */
 !.gitignore

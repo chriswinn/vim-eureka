@@ -1,0 +1,5 @@
+# The folder is the home of automatically loaded vim config file a la vim-plug pluggin manager 
+*
+*/
+!.gitignore
+!plug.vim
