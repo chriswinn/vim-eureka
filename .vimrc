@@ -1,14 +1,12 @@
-" Mostly stolen from Yan Pritzer's most excellent Yadr (github.com/skwp/dotfiles)
-
 " ================ General Config ====================
 
 "set number                     "Line numbers are good
+"set gcr=a:blinkon0              "Disable cursor blink
+"set visualbell                  "No sounds
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 syntax on                       "Turn on syntax highlighting
 
@@ -24,6 +22,7 @@ set nobackup
 set nowb
 
 " ================ Persistent Undo ==================
+
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
@@ -58,7 +57,6 @@ set linebreak    "Wrap lines at convenient points
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
-
 
 " ================ Completion =======================
 
@@ -98,6 +96,10 @@ endif
 
 " ================ Vim-Plug :: PlugIn's Enabled ========================
 
+"Run :PlugUpdate to update the plugins.
+"After the update, to review changes run :PlugDiff
+"Run :PlugClean, to detect and remove undeclared plugins.
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
@@ -105,27 +107,28 @@ Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
 Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+"   If you need Vim help for vim-plug itself (e.g. :help plug-options), register vim-plug as a plugin.
+"Plug 'junegunn/vim-plug'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" ================ Vim-Plug :: Settings ========================
-"Run :PlugUpdate to update the plugins.
-"After the update, to review changes run :PlugDiff
-"Run :PlugClean, to detect and remove undeclared plugins.
+" ================ Vim-Plug :: Plugin(s) :: Configs & Settings ========================
 
-" NERDTree OPTIONS START HERE
-"     Open NERDTree by default
+" NERDTree :: CONFIG OPTIONS START HERE
+"   Open NERDTree by default
 autocmd vimenter * NERDTree
-"     NERDTree : Making it prettier
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists(“s:std_in”) | NERDTree | endif 
+"   NERDTree : Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=1
-"     NERDTree : Closing Options
-"     NERDTree : Closing NERDTree automatically
-"let NERDTreeQuitOnOpen = 1
-"     NERDTree : automatically close a tab if the only remaining window is NerdTree
+" NERDTree : Closing Options
+"   NERDTree : Closing NERDTree automatically
+let NERDTreeQuitOnOpen = 1
+"   NERDTree : automatically close a tab if the only remaining window is NerdTree
 "autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
-"     NERDTree : Deleting files
+"   NERDTree : Deleting files
 "     Automatically delete the buffer of the file you just deleted with NerdTree:
 let NERDTreeAutoDeleteBuffer = 1
 
